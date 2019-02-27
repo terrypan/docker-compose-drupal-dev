@@ -16,7 +16,29 @@ $ docker-compose up -d
 ```
 
 Drupal files are located under `/app`<br>
-MySQL data located under `/db-data`
+MySQL data located under `/db-data` (not committed)
+
+## Data export/import via drush
+
+Find drupal container id, enter bash
+
+```
+$ docker exec -it CONTAINER_ID bash
+```
+
+Export db data
+
+```
+/app # drush cr
+/app # drush sql-dump > ./mysql_dump.sql
+```
+
+Import db data
+
+```
+/app # drush sql-drop
+/app # drush sql-cli < ./mysql_dump.sql
+```
 
 # Steps taken
 
