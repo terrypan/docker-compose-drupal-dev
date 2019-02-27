@@ -673,7 +673,7 @@ if ($settings['hash_salt']) {
  * Load services definition file.
  */
 $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
-
+$settings['trusted_host_patterns'] = array('^localhost$');
 /**
  * Override the default service container class.
  *
