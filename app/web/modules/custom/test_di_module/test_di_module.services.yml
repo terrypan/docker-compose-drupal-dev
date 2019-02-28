@@ -1,0 +1,3 @@
+services:
+  test_di_module.hello_generator:
+    class: Drupal\test_di_module\Services\HelloGenerator
