@@ -1,0 +1,7 @@
+test_di_module_says:
+  path: "/test_di_module/says/{count}"
+  defaults:
+    _controller: '\Drupal\test_di_module\Controller\TestDIController::say'
+    _title: "My test title"
+  requirements:
+    _permission: "access content"
