@@ -9,7 +9,7 @@ services:
       MYSQL_ROOT_PASSWORD: ""
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ports:
-      - "3801:3306"
+      - "3306:3306"
     volumes:
       - ./db-data:/var/lib/mysql
     restart: always
@@ -24,3 +24,12 @@ services:
     volumes:
       - ./app:/app
     restart: always
+  drush:
+    image: drush/drush:8
+    links:
+      - db
+    # volumes_from:
+    #   - drupal
+    volumes:
+      - ./app:/app
+      - ./db-data:/var/lib/mysql
