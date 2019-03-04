@@ -8,8 +8,8 @@ services:
       MYSQL_DATABASE: drupal
       MYSQL_ROOT_PASSWORD: ""
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    expose:
-      - "3306"
+    ports:
+      - "3801:3306"
     volumes:
       - ./db-data:/var/lib/mysql
     restart: always
