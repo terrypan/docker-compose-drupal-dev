@@ -1,7 +1,8 @@
-version: "3"
+version: "2.1"
 services:
   db:
     image: mysql:5.7
+    container_name: app.db
     environment:
       MYSQL_USER: drupal
       MYSQL_PASSWORD: drupal
@@ -13,9 +14,15 @@ services:
     volumes:
       - ./db-data:/var/lib/mysql
     restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
   drupal:
+    container_name: app.drupal
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     build: .
     links:
       - db
@@ -24,12 +31,14 @@ services:
     volumes:
       - ./app:/app
     restart: always
-  drush:
-    image: drush/drush:8
-    links:
-      - db
-    # volumes_from:
-    #   - drupal
-    volumes:
-      - ./app:/app
-      - ./db-data:/var/lib/mysql
+  # Drush container not working for drupal8, revert to bootstrap.sh script for drush si
+  # drush:
+  #   container_name: app.drush
+  #   image: drush/drush:8
+  #   links:
+  #     - db
+  #   volumes_from:
+  #     - drupal
+  #   # volumes:
+  #   #   - ./app:/app
+  #   #   - ./db-data:/var/lib/mysql
