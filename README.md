@@ -11,11 +11,26 @@ Vanilla Drupal development environment using [Docker Compose](https://docs.docke
 
 # Instructions
 
+1. Edit `.env` where appropriate, default values:
+
+```
+MYSQL_PORT=3306
+DRUPAL_PORT=8080
+
+MYSQL_USER=drupal
+MYSQL_PASSWORD=drupal
+MYSQL_DATABASE=drupal
+```
+
+2. Run bootstrap script:
+
 ```
 $ sh bootstrap.sh
 ```
 
-See inside, runs in order:
+#### Bootstrap steps
+
+Runs in order:
 
 - `(on host) docker-compose up -d`
 - `(on drupal container) composer install`
