@@ -60,4 +60,7 @@ printf "%s--->${YELLOW}Running: Import database dump${STOP}\n"
 docker_drupal_exec "drush sql-drop -y && drush sql-cli < ./mysql_dump.sql"
 printf "%s--->${GREEN}Data import successful!${STOP}\n"
 
+printf "%s--->${YELLOW}Running: Clear cache${STOP}\n"
+docker_drupal_exec "drush cr"
+
 printf "%s--->${GREEN} Good to go! There should be no issue on http://localhost:8080/admin/config/development/configuration${STOP}\n"
