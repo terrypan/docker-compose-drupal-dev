@@ -12,18 +12,24 @@ Vanilla Drupal development environment using [Docker Compose](https://docs.docke
 # Instructions
 
 ```
-$ docker-compose up -d
+$ sh bootstrap.sh
 ```
+
+See inside, runs in order:
+
+- `(on host) docker-compose up -d`
+- `(on drupal container) composer install`
+- `(on drupal container) drush si -y {params}`
 
 Drupal files are located under `/app`<br>
 MySQL data located under `/db-data` (not committed)
 
 ## Data export/import via drush
 
-Find drupal container id, enter bash
+Attach to drupal's container bash
 
 ```
-$ docker exec -it CONTAINER_ID bash
+$ docker exec -it $(docker ps -aqf "name=app.drupal") bash
 ```
 
 Export db data
@@ -48,28 +54,10 @@ Build images and start up
 $ docker-compose up -d --build
 ```
 
-Find drupal container id, enter bash
+Attach to drupal's container bash
 
 ```
-$ docker exec -it CONTAINER_ID bash
-```
-
-Install drupal via composer
-
-```
-/app #  composer create-project drupal-composer/drupal-project:8.x-dev /app --stability dev --no-interaction
-/app #  mkdir -p /app/config/sync
-/app #  chown -R www-data:www-data /app/web
-```
-
-Visit `http://localhost:8080` and complete drupal installation using:
-
-```
-db_name=drupal
-db_user=drupal
-db_pass=drupal
-db_host=db (linked container name)
-db_port=3306
+$ docker exec -it $(docker ps -aqf "name=app.drupal") bash
 ```
 
 Export drush config while in container
