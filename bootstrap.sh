@@ -1,4 +1,19 @@
 #!/bin/sh
+
+# Load env variables from .env file
+set -o allexport; source .env; set +o allexport
+
+# Replace default settings in settings.php based on .env
+chmod 775 app/web/sites/default/settings.php
+chmod 775 app/web/sites/default/settings.php.template
+
+sed -e "s/:MYSQL_DATABASE:/${MYSQL_DATABASE}/g" \
+    -e "s/:MYSQL_USER:/${MYSQL_USER}/g" \
+    -e "s/:MYSQL_PASSWORD:/${MYSQL_PASSWORD}/g" \
+    -e "s/:MYSQL_PORT:/${MYSQL_PORT}/g" \
+    ./app/web/sites/default/settings.php.template > ./app/web/sites/default/settings.php
+
+
 GREEN="\e[92m"
 YELLOW="\e[33m"
 STOP="\e[0m"
@@ -16,9 +31,10 @@ docker exec -it $(docker ps -aqf "name=app.drupal") bash -c "drush si -y \
   --site-name=\"Tennis tournie\"   \
   --account-name=drupal   \
   --account-pass=drupal   \
-  --db-url=mysql://drupal:drupal@db:3306/drupal"
+  --db-url=mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:${MYSQL_PORT}/${MYSQL_DATABASE}"
 printf "%s--->${GREEN}Site installed successfully!${STOP}\n"
-
+echo "--db-url=mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:${MYSQL_PORT}/${MYSQL_DATABASE}"
+exit
 
 printf "%s--->${YELLOW}Running: edit system.site.uuid to match migration${STOP}\n"
 

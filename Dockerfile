@@ -30,3 +30,8 @@ RUN composer create-project drupal-composer/drupal-project:8.x-dev /app --stabil
 
 WORKDIR /app
 RUN composer require drush/drush
+
+# Fix permissions
+RUN chmod 775 ./web/sites/default && \
+  chmod 775 ./web/sites/default/settings.php 
+# chmod 775 ./web/sites/default/settings.php.template
