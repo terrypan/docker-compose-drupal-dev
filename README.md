@@ -20,6 +20,10 @@ See inside, runs in order:
 - `(on host) docker-compose up -d`
 - `(on drupal container) composer install`
 - `(on drupal container) drush si -y {params}`
+- `(on drupal container) drush config-set "system.site" uuid {migration_uuid} -y`
+- `(on drupal container) drush {remove_placeholders}`
+- `(on drupal container) drush cim -y`
+- `(on drupal container) drush drush php-eval 'node_access_rebuild();'`
 
 Drupal files are located under `/app`<br>
 MySQL data located under `/db-data` (not committed)
