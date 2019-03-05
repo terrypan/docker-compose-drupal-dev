@@ -1,22 +1,26 @@
-#!/bin/bash
-echo "@@@@ Bootstraping @@@@"
+#!/bin/sh
+GREEN="\e[92m"
+YELLOW="\e[33m"
+STOP="\e[0m"
 
-echo "->Starting docker containers with deamon (-d)..."
+printf "%s--->${YELLOW}@@@@ Bootstraping @@@@${STOP}\n"
+
+printf "%s--->${YELLOW}Starting docker containers with deamon (-d)...${STOP}\n"
 docker-compose up -d
-echo "Done"
+printf "%s--->${GREEN} docker containers up and running!${STOP}\n"
 
-echo "->Running: composer install"
+printf "%s--->${YELLOW}Running: composer install${STOP}\n"
 docker exec -it $(docker ps -aqf "name=app.drupal") bash -c "composer install"
-echo "->Running: drush si..."
+printf "%s--->${YELLOW}Running: drush site-install...${STOP}\n"
 docker exec -it $(docker ps -aqf "name=app.drupal") bash -c "drush si -y \
   --site-name=\"Tennis tournie\"   \
   --account-name=drupal   \
   --account-pass=drupal   \
   --db-url=mysql://drupal:drupal@db:3306/drupal"
-echo "Site installed successfully!"
+printf "%s--->${GREEN}Site installed successfully!${STOP}\n"
 
 
-echo "->Running: edit system.site.uuid to match migration"
+printf "%s--->${YELLOW}Running: edit system.site.uuid to match migration${STOP}\n"
 
 # set system.site.uuid to migration's uuid
 docker exec -it $(docker ps -aqf "name=app.drupal") bash -c "drush config-set \"system.site\" uuid 64a21b82-14bd-4631-95ba-f9ecba6af357 -y"
@@ -24,14 +28,17 @@ docker exec -it $(docker ps -aqf "name=app.drupal") bash -c "drush config-set \"
 # next command needed to fix core issue: https://www.drupal.org/node/2583113
 docker exec -it $(docker ps -aqf "name=app.drupal") bash -c "drush ev '\Drupal::entityManager()->getStorage(\"shortcut_set\")->load(\"default\")->delete();'"
 
-echo "->Running: import configuration from app/config/sync..."
+printf "%s--->${YELLOW}Running: import configuration from app/config/sync...${STOP}\n"
 # import config
 docker exec -it $(docker ps -aqf "name=app.drupal") bash -c "drush cim -y"
-echo "->Config imported!!"
+printf "%s--->${GREEN}Config imported!!${STOP}\n"
 
-echo "->Running: Drush fix permissions"
+printf "%s--->${YELLOW}Running: Drush fix permissions${STOP}\n"
 # fix permissions
 docker exec -it $(docker ps -aqf "name=app.drupal") bash -c "drush php-eval 'node_access_rebuild();'"
 
+printf "%s--->${YELLOW}Running: Import database dump${STOP}\n"
+docker exec -it $(docker ps -aqf "name=app.drupal") bash -c "drush sql-drop -y && drush sql-cli < ./mysql_dump.sql"
+printf "%s--->${GREEN}Data import successful!${STOP}\n"
 
-echo "Good to go! There should be no issue on http://localhost:8080/admin/config/development/configuration"
+printf "%s--->${GREEN} Good to go! There should be no issue on http://localhost:8080/admin/config/development/configuration${STOP}\n"
