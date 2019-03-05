@@ -1,0 +1,40 @@
+uuid: 685565a3-86ba-4cc3-9d07-2ebd32f0e579
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.tennis_club.field_clublogo
+    - group.type.tennis_club
+    - image.style.thumbnail
+  module:
+    - image
+    - path
+id: group.tennis_club.default
+targetEntityType: group
+bundle: tennis_club
+mode: default
+content:
+  field_clublogo:
+    weight: 31
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  label:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  uid: true

@@ -1,0 +1,149 @@
+uuid: 9aa11447-d1f5-4884-a39d-debfd501022d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.match.field_matchdate
+    - field.field.node.match.field_matchdescription
+    - field.field.node.match.field_player1firstsetscore
+    - field.field.node.match.field_player1secondsetscore
+    - field.field.node.match.field_player1thirdsetscore
+    - field.field.node.match.field_player1userid
+    - field.field.node.match.field_player2firstsetscore
+    - field.field.node.match.field_player2secondsetscore
+    - field.field.node.match.field_player2thirdsetscore
+    - field.field.node.match.field_player2userid
+    - node.type.match
+  module:
+    - datetime
+    - path
+id: node.match.default
+targetEntityType: node
+bundle: match
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_matchdate:
+    weight: 122
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_matchdescription:
+    weight: 123
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_player1firstsetscore:
+    weight: 124
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_player1secondsetscore:
+    weight: 125
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_player1thirdsetscore:
+    weight: 126
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_player1userid:
+    weight: 127
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_player2firstsetscore:
+    weight: 128
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_player2secondsetscore:
+    weight: 129
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_player2thirdsetscore:
+    weight: 130
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_player2userid:
+    weight: 131
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 15
+    region: content
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 120
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 16
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+hidden: {  }

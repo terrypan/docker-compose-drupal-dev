@@ -1,0 +1,17 @@
+uuid: 2155df32-8053-4db5-8ec7-d609d09a8f44
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.tennis_club
+  enforced:
+    config:
+      - user.role.administrator
+id: tennis_club-a416e6833
+label: Administrator
+weight: 2
+internal: true
+audience: outsider
+group_type: tennis_club
+permissions_ui: false
+permissions: {  }

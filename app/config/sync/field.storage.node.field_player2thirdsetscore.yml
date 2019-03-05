@@ -1,0 +1,20 @@
+uuid: 7d13606b-3f5c-468d-9b14-0f2c6ed4125d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_player2thirdsetscore
+field_name: field_player2thirdsetscore
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

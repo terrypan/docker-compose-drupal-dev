@@ -1,0 +1,19 @@
+uuid: dcb62a18-6690-4ba7-a5bc-f07c2acc232b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_matchdescription
+    - node.type.match
+id: node.match.field_matchdescription
+field_name: field_matchdescription
+entity_type: node
+bundle: match
+label: matchDescription
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

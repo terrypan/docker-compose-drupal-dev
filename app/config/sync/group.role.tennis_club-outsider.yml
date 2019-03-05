@@ -1,0 +1,14 @@
+uuid: cb146a17-8e1f-4bf3-9ca7-fed721b82739
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.tennis_club
+id: tennis_club-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: tennis_club
+permissions_ui: true
+permissions: {  }

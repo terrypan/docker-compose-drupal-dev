@@ -1,0 +1,7 @@
+status: '1'
+pattern: '[node:field_matchdate:date:custom:Ymd].[node:field_player1userid]vs[node:field_player2userid]'
+php: 0
+escape: 0
+dependencies:
+  config:
+    - node.type.match

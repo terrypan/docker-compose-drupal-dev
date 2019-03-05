@@ -1,0 +1,24 @@
+uuid: 79eec097-59af-479d-843c-7edc8c03f485
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_matchdate
+    - node.type.match
+  module:
+    - datetime
+id: node.match.field_matchdate
+field_name: field_matchdate
+entity_type: node
+bundle: match
+label: matchDate
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

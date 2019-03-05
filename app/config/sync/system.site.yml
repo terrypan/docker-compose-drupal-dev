@@ -1,10 +1,10 @@
-uuid: efdfd1fd-701e-4f08-85fc-61aabf945fc0
-name: TennisTournament
-mail: aaaa@gmail.com
-slogan: ''
+uuid: 64a21b82-14bd-4631-95ba-f9ecba6af357
+name: Tennis Tournie
+mail: dev2@dev2.com
+slogan: ""
 page:
-  403: ''
-  404: ''
+  403: ""
+  404: ""
   front: /node
 admin_compact_mode: false
 weight_select_max: 100

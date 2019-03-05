@@ -1,0 +1,28 @@
+uuid: 44356ec3-393f-40c4-abb9-bfe2b9ab6e90
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_player1userid
+    - node.type.match
+id: node.match.field_player1userid
+field_name: field_player1userid
+entity_type: node
+bundle: match
+label: player1UserID
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

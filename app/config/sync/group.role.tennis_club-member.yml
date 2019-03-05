@@ -1,0 +1,14 @@
+uuid: ea19f737-e03a-4444-a1c8-ae3de64c46e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.tennis_club
+id: tennis_club-member
+label: Member
+weight: -100
+internal: true
+audience: member
+group_type: tennis_club
+permissions_ui: true
+permissions: {  }

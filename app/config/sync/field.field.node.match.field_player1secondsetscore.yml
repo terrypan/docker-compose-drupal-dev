@@ -1,0 +1,23 @@
+uuid: 668ab118-f57c-4c3b-8ec6-91d95da3875a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_player1secondsetscore
+    - node.type.match
+id: node.match.field_player1secondsetscore
+field_name: field_player1secondsetscore
+entity_type: node
+bundle: match
+label: player1SecondSetScore
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

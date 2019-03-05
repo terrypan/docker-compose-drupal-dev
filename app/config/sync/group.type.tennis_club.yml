@@ -1,0 +1,10 @@
+uuid: a0aa34b8-511a-42c6-b7cf-97ae565f98ed
+langcode: en
+status: true
+dependencies: {  }
+id: tennis_club
+label: 'Tennis Club'
+description: 'The Tennis Club is used to group all relevant content'
+creator_membership: true
+creator_wizard: true
+creator_roles: {  }

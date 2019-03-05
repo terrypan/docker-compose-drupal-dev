@@ -1,0 +1,22 @@
+uuid: 4bc02c9f-5290-4907-8ec3-993332fa4443
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.round
+  module:
+    - user
+id: node.round.teaser
+targetEntityType: node
+bundle: round
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_matchidreference: true
+  field_roundstartdate: true

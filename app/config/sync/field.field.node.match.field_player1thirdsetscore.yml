@@ -1,0 +1,23 @@
+uuid: 47dbb711-60c8-4d4e-a695-2dbca3ae13c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_player1thirdsetscore
+    - node.type.match
+id: node.match.field_player1thirdsetscore
+field_name: field_player1thirdsetscore
+entity_type: node
+bundle: match
+label: player1ThirdSetScore
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

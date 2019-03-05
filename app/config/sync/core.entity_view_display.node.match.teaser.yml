@@ -1,0 +1,31 @@
+uuid: eaf39b0c-c2b1-467f-9d6c-69afa3f0e1f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.match.field_matchdate
+    - node.type.match
+  module:
+    - user
+id: node.match.teaser
+targetEntityType: node
+bundle: match
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_matchdate: true
+  field_matchdescription: true
+  field_player1firstsetscore: true
+  field_player1secondsetscore: true
+  field_player1thirdsetscore: true
+  field_player1userid: true
+  field_player2firstsetscore: true
+  field_player2secondsetscore: true
+  field_player2thirdsetscore: true
+  field_player2userid: true

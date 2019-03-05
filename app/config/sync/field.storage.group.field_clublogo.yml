@@ -1,0 +1,30 @@
+uuid: a2049f66-61d6-4e25-8bd9-952b33330ed8
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - group
+    - image
+id: group.field_clublogo
+field_name: field_clublogo
+entity_type: group
+type: image
+settings:
+  uri_scheme: public
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  target_type: file
+  display_field: false
+  display_default: false
+module: image
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
