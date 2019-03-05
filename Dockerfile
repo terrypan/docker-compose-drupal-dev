@@ -29,7 +29,7 @@ RUN composer create-project drupal-composer/drupal-project:8.x-dev /app --stabil
   chown -R www-data:www-data /app/web
 
 WORKDIR /app
-RUN composer require drush/drush
+RUN composer require drush/drush:9.5.2
 
 # Fix permissions
 RUN chmod 775 ./web/sites/default && \
