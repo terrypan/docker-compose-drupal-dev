@@ -32,11 +32,11 @@ printf "%s--->${YELLOW}Running: composer install${STOP}\n"
 docker_drupal_exec "composer install"
 printf "%s--->${YELLOW}Running: drush site-install...${STOP}\n"
 docker_drupal_exec "drush si standard -y \
-  --root=/app
+  --root=/app \
   --site-name=\"Tennis tournie\"   \
   --account-name=drupal   \
   --account-pass=drupal   \
-  --db-url=mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:${MYSQL_PORT}/${MYSQL_DATABASE}"
+  --db-url=mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:/${MYSQL_DATABASE}"
 printf "%s--->${GREEN}Site installed successfully!${STOP}\n"
 echo "--db-url=mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:${MYSQL_PORT}/${MYSQL_DATABASE}"
 
