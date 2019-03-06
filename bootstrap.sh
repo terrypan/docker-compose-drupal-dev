@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 docker_drupal_exec(){
-  docker exec -it $(docker ps -aqf "name=app.drupal") bash -c  "$1"
+  docker exec -it $(docker ps -aqf "name=${DRUPAL_CONTAINER}") bash -c  "$1"
 }
 
 # Load env variables from .env file
@@ -14,7 +14,7 @@ chmod 775 app/web/sites/default/settings.php.template
 sed -e "s/:MYSQL_DATABASE:/${MYSQL_DATABASE}/g" \
     -e "s/:MYSQL_USER:/${MYSQL_USER}/g" \
     -e "s/:MYSQL_PASSWORD:/${MYSQL_PASSWORD}/g" \
-    -e "s/:MYSQL_PORT:/${MYSQL_PORT}/g" \
+    -e "s/:MYSQL_PORT://g" \
     ./app/web/sites/default/settings.php.template > ./app/web/sites/default/settings.php
 
 
@@ -31,7 +31,8 @@ printf "%s--->${GREEN} docker containers up and running!${STOP}\n"
 printf "%s--->${YELLOW}Running: composer install${STOP}\n"
 docker_drupal_exec "composer install"
 printf "%s--->${YELLOW}Running: drush site-install...${STOP}\n"
-docker_drupal_exec "drush si -y \
+docker_drupal_exec "drush si standard -y \
+  --root=/app
   --site-name=\"Tennis tournie\"   \
   --account-name=drupal   \
   --account-pass=drupal   \
@@ -56,11 +57,11 @@ printf "%s--->${YELLOW}Running: Drush fix permissions${STOP}\n"
 # fix permissions
 docker_drupal_exec "drush php-eval 'node_access_rebuild();'"
 
-printf "%s--->${YELLOW}Running: Import database dump${STOP}\n"
-docker_drupal_exec "drush sql-drop -y && drush sql-cli < ./mysql_dump.sql"
-printf "%s--->${GREEN}Data import successful!${STOP}\n"
+# printf "%s--->${YELLOW}Running: Import database dump${STOP}\n"
+# docker_drupal_exec "drush sql-drop -y && drush sql-cli < ./mysql_dump.sql"
+# printf "%s--->${GREEN}Data import successful!${STOP}\n"
 
 printf "%s--->${YELLOW}Running: Clear cache${STOP}\n"
 docker_drupal_exec "drush cr"
 
-printf "%s--->${GREEN} Good to go! There should be no issue on http://localhost:8080/admin/config/development/configuration${STOP}\n"
+printf "%s--->${GREEN} Good to go! There should be no issue on http://localhost:${DRUPAL_PORT}/admin/config/development/configuration${STOP}\n"
