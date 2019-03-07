@@ -28,6 +28,8 @@
         "drupal/core": "^8.6.0",
         "drupal/group": "^1.0@RC",
         "drupal/migrate_plus": "^4.1",
+        "drupal/migrate_source_csv": "^2.2",
+        "drupal/migrate_tools": "^4.1",
         "drupal/token": "^1.5",
         "drush/drush": "9.5.2",
         "vlucas/phpdotenv": "^2.4",
