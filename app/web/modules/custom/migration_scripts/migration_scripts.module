@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains migrate_scripts.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function migration_scripts_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the migration_scripts module.
+    case 'help.page.migration_scripts':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This module provides the examples for how to migrate data from CSV files into Drupal 8 site.') . '</p>';
+      return $output;
+
+    default:
+  }
+}

@@ -1,0 +1,33 @@
+id: migrate_csv_users
+label: "Migrate users from the csv file"
+migration_group: migration
+source:
+  plugin: csv
+  # Full path to the file.
+  path: "modules/custom/migration_scripts/assets/csv/migrate_csv_users.csv"
+  header_row_count: 1
+  keys:
+    - ID
+  # Adding constant value.
+  constants:
+    status: 1
+process:
+  # Adding the mapping between the fields and the csv columns.
+  name: Name
+  mail: Email
+  roles:
+    plugin: explode
+    delimiter: ","
+    source: Roles
+  status: constants/status
+  # migrating the the password in plain texts.
+  pass:
+    plugin: callback
+    callable: md5
+    source: Password
+destination:
+  plugin: "entity:user"
+  md5_passwords: true
+migration_dependencies:
+  required: {}
+  optional: {}
