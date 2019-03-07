@@ -64,4 +64,12 @@ docker_drupal_exec "drush php-eval 'node_access_rebuild();'"
 printf "%s--->${YELLOW}Running: Clear cache${STOP}\n"
 docker_drupal_exec "drush cr"
 
+printf "%s--->${YELLOW}Running: Enable modules${STOP}\n"
+docker_drupal_exec "drush en migrate migrate_tools migrate_plus migrate_source_csv migration_scripts -y"
+
+printf "%s--->${YELLOW}Running: Migrate users${STOP}\n"
+docker_drupal_exec "drush mim migrate_csv_users"
+
+
+
 printf "%s--->${GREEN} Good to go! There should be no issue on http://localhost:${DRUPAL_PORT}/admin/config/development/configuration${STOP}\n"
