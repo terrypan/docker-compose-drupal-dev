@@ -65,7 +65,7 @@ printf "%s--->${YELLOW}Running: Clear cache${STOP}\n"
 docker_drupal_exec "drush cr"
 
 printf "%s--->${YELLOW}Running: Enable modules${STOP}\n"
-docker_drupal_exec "drush en migrate migrate_tools migrate_plus migrate_source_csv migration_scripts -y"
+docker_drupal_exec "drush en migrate, migrate_tools, migrate_plus, migrate_source_csv, migration_scripts, devel, devel_generate, kint, webprofiler -y"
 
 printf "%s--->${YELLOW}Running: Migrate users${STOP}\n"
 docker_drupal_exec "drush mim migrate_csv_users"
